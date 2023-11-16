@@ -14,13 +14,25 @@ struct ContentView: View {
                 .font(.title)
                 .fontWeight(.bold)
                 .preferredColorScheme(.dark)
+            LazyVGrid(columns: Array(repeating: GridItem(.fixed(120), spacing: 15), count: 3), spacing: 15) {
+                    Text("X")
+                    Text("X")
+                    Text("X")
+                    Text("X")
+                    Text("X")
+                    Text("X")
+                    Text("X")
+                    Text("X")
+                    Text("X")
+                }
+            }
+            .padding()
         }
-        .padding()
     }
-}
+    
+    struct ContentView_Previews: PreviewProvider {
+        static var previews: some View {
+            ContentView()
+        }
+    }
 
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView()
-    }
-}

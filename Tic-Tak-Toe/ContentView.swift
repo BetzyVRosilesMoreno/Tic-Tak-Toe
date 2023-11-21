@@ -45,8 +45,15 @@ struct ContentView: View {
         }
         .preferredColorScheme(.dark)
         .alert(isPresented: $gameOver) {
-                Alert(title: Text(winMessage))
+            Alert(title: Text(winMessage), dismissButton: .destructive(Text("Play again"),
+                                                                       action: {
+                withAnimation {
+                    moves = Array(repeating: "", count: 9)
+                    gameOver = false
+                }
             }
+                                                                      ))
+        }
         .onChange(of: moves) { newValue in
             checkForWinner()
         }
@@ -61,6 +68,9 @@ struct ContentView: View {
         checkLine(a: 6, b: 7, c: 8) // bottom row
         checkLine(a: 0, b: 4, c: 8) // top left to right bottom row
         checkLine(a: 2, b: 4, c: 6) // top right to left bottom row
+        checkLine(a: 0, b: 3, c: 6) // top left to left bottom row
+        checkLine(a: 1, b: 4, c: 7) // top middle to middle bottom row
+        checkLine(a: 2, b: 5, c: 8) // top right to right bottom row
     }
     private func checkLine(a: Int, b: Int, c: Int) {
         if moves[a] != "" && moves[a] == moves[b] && moves[b] == moves[c] {

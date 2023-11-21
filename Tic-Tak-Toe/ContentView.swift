@@ -63,6 +63,10 @@ struct ContentView: View {
             winMessage = "\(moves[0]) is the winner!"
             gameOver = true
       }
+        if !(gameOver || moves.contains("")) {
+            winMessage = "Cat's Game"
+            gameOver = true
+        }
         checkLine(a: 0, b: 1, c: 2) // top row
         checkLine(a: 3, b: 4, c: 5) // middle row
         checkLine(a: 6, b: 7, c: 8) // bottom row
